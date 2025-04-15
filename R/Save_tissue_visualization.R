@@ -13,9 +13,9 @@
 #'
 #' @return NULL This function does not return a value; it saves a PNG file.
 #' @export
-#' @import spatstat 
+#'  
 Save_tissue_visualization = function(Meta_data, object = Clustering, Output_path,Method,Tissue,scaling_factor=1.5) {
-  ppp_temp = ppp(x = Meta_data$cell_centroid_x,y = Meta_data$cell_centroid_y,
+  ppp_temp = spatstat::ppp(x = Meta_data$cell_centroid_x,y = Meta_data$cell_centroid_y,
                  window = owin(xrange = range(Meta_data$cell_centroid_x),yrange = range(Meta_data$cell_centroid_y)))
   N_cluster = length(unique(object))
   optimal_palette = rainbow(N_cluster)
