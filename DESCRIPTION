@@ -1,0 +1,15 @@
+Package: TranspaceR
+Type: Package
+Title: Statistical analysis of Spatial transcriptomic data
+Version: 1.0.0
+Authors@R: 
+     c(person("Pierre", "Bost", email = "pierre.bost@curie.fr", role = c("aut", "cre")),
+     person("Fatoumata", "Mangane", email = "fatoumatamangane1@gmail.com", role = c("aut"))
+     )
+Maintainer: <fatoumatamangane1@gmail.com>
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+NeedsCompilation: no
+Packaged: 2025-04-15 10:28:36 UTC; pbost
+Author: Pierre Bost [aut, cre],
+  Fatoumata Mangane [aut]
