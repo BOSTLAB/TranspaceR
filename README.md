@@ -8,9 +8,10 @@ TranspaceR is an R-package dedicated to process various spatial data to establis
 ## Installation
 
 TranspaceR can be installed from the source file :
-`R
+
+```R
 devtools::install_local("Path/to/TranspaceR_1.0.0.tar.gz",dependencies = T)
-`
+```
 
 It can also be installed using devtools :
 `R
