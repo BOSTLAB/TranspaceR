@@ -14,6 +14,6 @@ devtools::install_local("Path/to/TranspaceR_1.0.0.tar.gz",dependencies = T)
 ```
 
 It can also be installed using devtools :
-`R
+```R
 devtools::install_github("BOSTLAB/TranspaceR")
-`
+```
