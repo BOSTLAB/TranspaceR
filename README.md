@@ -1,6 +1,7 @@
 # TranspaceR
 
 TranspaceR is an R-package dedicated to process various spatial data to establish an atlas of Cellular Spatial Structures. This project focuses on two primary analyses:
+
     1. **KNN-Based Clustering**: We employ a K-Nearest Neighbors (KNN) approach to cluster cells based on their spatial transcriptomic profiles.
     2. **Cell Annotation**: Cell types are annotated using the Scimilarity tool, which documentation's can be found [here](https://genentech.github.io/scimilarity/index.html).
 
