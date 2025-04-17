@@ -1,3 +1,6 @@
+########### EDITING IN PROGRESS 
+ 
+ 
  ## Overview
 This document presents the steps to analyze a subset  (square located between 1000 and 2000 um on both axis) of the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard)  from 10XGenomics using the TranSpaceR pipeline. 
 The analysis includes data curation, variable genes selection, clustering and visualization of results. 
@@ -51,7 +54,7 @@ print('Otsu's threshold is', QC2_results$Otsu_threshold)
 ```
 [1] Otsu's threshold is 45
 ```
-<img src= 'data/QC.png' width="1000" height="500">
+<img src= 'data/QC.png' width="500" height="500">
 These two plots are saved in the output path. The 2D density plot from QC1, which illustrates the relationship between the number of transcripts
 and the radius of cells,  the appropriate thresholds. 
 From QC2, Otsu's threshold for the number of transcripts per gene is automatically computed and utilized within the `curate_data` function as below.
