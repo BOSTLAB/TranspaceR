@@ -10,7 +10,6 @@
 #' @param Method A character string indicating the spatial method used.
 #' @param Tissue A character string indicating the type of tissue.
 #' @param scaling_factor A numeric value that determines the size of the points in the plot. Default is 1.5.
-#' @import spatstat
 #' @return NULL This function does not return a value; it saves a PNG file.
 #' @export
 #'  
