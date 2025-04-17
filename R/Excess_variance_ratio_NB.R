@@ -115,4 +115,3 @@ Excess_variance_ratio_NB = function(Expression_file,Output_path,Method,Tissue,P_
   
   return(list(Selected_genes = Selected_genes, Excess_variance_ratio = Excess_variance_ratio[colnames(Expression_file)]))
 }
-

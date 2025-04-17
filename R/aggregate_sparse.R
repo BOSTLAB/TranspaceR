@@ -14,12 +14,13 @@ aggregate_sparse <- function(Expression_file, object = Clustering) {
   rownames(mean_expression) <- genes
   colnames(mean_expression) <- as.character(groups)
   objectr <- as.factor(object)
-  for (g in groups) {
+  mean_expression <- sapply(groups, function(g) {
     group_indices <- which(object == g)
     if (length(group_indices) > 0) {
-      mean_values <- colMeans(Expression_file[group_indices, , drop = FALSE], na.rm = TRUE)
-      mean_expression[, as.character(g)] <- mean_values
+      colMeans(Expression_file[group_indices, , drop = FALSE], na.rm = TRUE)
+    } else {
+      NA 
     }
-  }
+  })
   return(mean_expression)
 }

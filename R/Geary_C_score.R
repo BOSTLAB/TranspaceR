@@ -94,4 +94,3 @@ Geary_C_score = function(Expression_file,Meta_data,Output_path,Method,Tissue,pva
   dev.off()
   return(list(Values = geary_vector ,Selected_genes = Selected,P_values = P_values))
 }
-

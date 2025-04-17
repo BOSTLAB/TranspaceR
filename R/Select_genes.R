@@ -19,7 +19,7 @@ Select_genes = function (Selected_objects =list(Variance_genes,Zero_genes),Selec
   for (i in 1:length(Selected_names)) {
     score_df[[Selected_names[i]]] <- as.integer(score_df$Shared_genes %in% Selected_objects[[i]])
   }
-  pdf(paste(Output_path, Method, "_", Tissue, "_Upset-plot.pdf", sep = ""), width = 6.5, height = 6.5, useDingbats = FALSE)
+  pdf(paste0(Output_path, Method, "_", Tissue, "_Upset-plot.pdf"), width = 6.5, height = 6.5, useDingbats = FALSE)
   p <- upset(score_df, sets = Selected_names,
              order.by = "freq", empty.intersections = "on", text.scale = 1.5, matrix.color = "#56B4E9",
              main.bar.color = "grey", mainbar.y.label = 'Number of shared genes')

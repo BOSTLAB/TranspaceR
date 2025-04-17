@@ -13,7 +13,7 @@
  
 
 Save_boxplot = function(Data_correction,object = Annotation_cells_renamed,gene ='MS4A1',Output_path,Method,Tissue) {
-  pdf(paste(Output_path,Method,'_',Tissue,"_expression_boxplot.pdf",sep=""),useDingbats = FALSE,width = 6.5,height = 6.5)
+  pdf(paste0(Output_path,Method,'_',Tissue,"_expression_boxplot.pdf"),useDingbats = FALSE,width = 6.5,height = 6.5)
   par(las=1,bty="l",mar=c(5,15,4,3))
     boxplot(Data_correction[,gene]~object,
             outline=F,horizontal = TRUE,ylab="",xlab="Gene expression",cex.lab=1.3,main=gene)

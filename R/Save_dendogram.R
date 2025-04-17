@@ -19,7 +19,7 @@
 #' @import grid
 #' 
 Save_dendogram = function (Clustering,Mean_expression,Annotation_cells_renamed,Output_path,Method,Tissue) {
-  pdf(paste(Output_path,'_',Method,'_',Tissue,"_Dendrogram.pdf",sep = ""),width = 6.5,height = 6.5,useDingbats = FALSE)
+  pdf(paste0(Output_path,'_',Method,'_',Tissue,"_Dendrogram.pdf"),width = 6.5,height = 6.5,useDingbats = FALSE)
   ratio <- table(Clustering, Annotation_cells_renamed)/rowSums(table(Clustering, Annotation_cells_renamed))
   filtered_table <- as.data.frame(ratio)
   filtered_table <- filtered_table %>%

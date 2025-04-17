@@ -21,9 +21,6 @@
 #' \item{Model}{A string indicating the name of the best fitting model.}
 #' \item{Variogram}{A list of variogram values used in the fitting process.}
 #' @export
-#' @import imager
-#' @import gsignal
-#' @import OpenImageR
 #' 
 process_gene <- function(gene_name,sum_by_cut,n_pad,save_plot,Output_path) {
   #matrix creation
