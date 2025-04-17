@@ -1,5 +1,5 @@
  ## Overview
-This document presents the steps to analyze the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard) from 10XGenomics using the TranSpaceR pipeline. 
+This document presents the steps to analyze a subset  (square located between 1000 and 2000 um on both axis) of the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard)  from 10XGenomics using the TranSpaceR pipeline. 
 The analysis includes data curation, variable genes selection, clustering and visualization of results. 
 ## Directory Structure
 ```
@@ -34,11 +34,11 @@ dim(Expression_file)
 dim(Meta_data)
 ```
 ```
-[1] 377985    541
-[1] 377985     10
+[1] 20592    541
+[1] 20592     10
 ```
 The dataset is loaded, and the columns of `Expression_file` containing unfit data have been removed. We obtain a matrix that
-exclusively contains RNA counts for each gene (541) across individual cells (377985). The expression matrix and the metadata file have the same cells.
+exclusively contains RNA counts for each gene (541) across individual cells (20592). The expression matrix and the metadata file have the same cells.
 
 ## Step 1: Quality control
 
@@ -49,9 +49,9 @@ QC2_results =  QC_Gene_threshold(Expression_file,Meta_data,Method,Tissue,Output_
 print('Otsu's threshold is', QC2_results$Otsu_threshold)
 ```
 ```
-[1] Otsu's threshold is 486
+[1] Otsu's threshold is 45
 ```
-<img src= 'Example_lymph_node/QC.png' width="1000" height="500">
+<img src= 'data/QC.png' width="1000" height="500">
 These two plots are saved in the output path. The 2D density plot from QC1, which illustrates the relationship between the number of transcripts
 and the radius of cells,  the appropriate thresholds. 
 From QC2, Otsu's threshold for the number of transcripts per gene is automatically computed and utilized within the `curate_data` function as below.
@@ -66,8 +66,8 @@ dim(Expression_file)
 dim(Meta_data)
 ```
 ```R
-[1] 363947    375
-[1] 363947     11
+[1] 19958    375
+[1] 19958     11
 ```
 After curation, about 96% of initial cells and 69% of initial transcripts are kept for further analysis.
 
@@ -81,14 +81,14 @@ The selected genes from each scoring method are highlighted in red.
 Variance_computation = Excess_variance_ratio_NB(Expression_file,Output_path,Method,Tissue)
 Variance_genes= Variance_computation$Selected_genes
 ```
-<img src= 'Example_lymph_node/Variance_score.png' width="500" height="500">
+<img src= 'data/variance_score.png' width="500" height="500">
 
 ### Zero proportion genes
 ```R
 Zero_score = Excess_zero_score_NB(Expression_file,Output_path,Method,Tissue)
 Zero_genes = names(Zero_score[order(Zero_score,decreasing = TRUE)])[1:100]
 ```
-<img src= 'Example_lymph_node/Zero_score.png' width="500" height="500">
+<img src= 'data/zero_score.png' width="500" height="500">
 
 ### Spatially variable genes
 
@@ -97,14 +97,14 @@ Zero_genes = names(Zero_score[order(Zero_score,decreasing = TRUE)])[1:100]
 Geary_computation = Geary_C_score(Expression_file,Meta_data,Output_path,Method,Tissue,pvalue = 0.01)
 Geary_genes = Geary_computation$Selected_genes
 ```
-<img src= 'Example_lymph_node/geary.png' width="500" height="500">
+<img src= 'data/geary_score.png' width="500" height="500">
 
 The plot depicting the correlation between the Spatial variance score and Total variance score can be saved in the output path. It shows a correlation of 0.37 between the two methods.
 
 ```R
 Save_geary_variance_plot(Variance_computation,Geary_computation,Output_path)
 ```
-<img src= 'Example_lymph_node/GearyvsVariance.png' width="500" height="500">
+<img src= 'data/geary_variance.png' width="500" height="500">
 
 ```R
 Shared_genes = Select_genes(Selected_objects =list(Variance_genes,Zero_genes,Geary_genes),
@@ -112,7 +112,7 @@ Shared_genes = Select_genes(Selected_objects =list(Variance_genes,Zero_genes,Gea
 ```
 The selection of all the genes selected by at least one method is illustrated by this Upset Plot (saved automatically).
 
-<img src= 'Example_lymph_node/Upset_plot.png' width="500" height="500">
+<img src= 'data/upset_plot.png' width="500" height="500">
 
 ## Step 3 : Clustering and annotation results
 ### Clustering
@@ -126,39 +126,37 @@ The ouptuts of the function Clusters_maker() include the list of cluster affilia
 ```R
 Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue)
 ```
-<img src= 'Example_lymph_node/heatmap_KNN.png' width="700" height="700">
 
 ### Scimilarity Annotation
 ```R
   Annotation_cells_renamed = Load_scimilarity_results(path,celltype_threshold=0.01)
   Save_annotation_plot(Annotation_cells_renamed,Output_path,Method,Tissue)
-```
-<img src= 'Example_lymph_node/Sci_proportion.png' width="500" height="500">
+``
 
 ```R
 Save_heatmap_markers(Expression_file, object = Annotation_cells_renamed, Output_path,Method,Tissue)
 ```
-<img src= 'Example_lymph_node/heatmap_SCI.png' width="700" height="700">
+<img src= 'data/heatmap_scimilarity.png' width="700" height="700">
 
 ```R
 Save_boxplot(Data_correction,object = Annotation_cells_renamed,gene = 'MS4A1', Output_path,Method,Tissue)
 ```
-<img src= 'Example_lymph_node/boxplot_expression.png' width="500" height="500">
+<img src= 'data/boxplot_scimilarity.png' width="500" height="500">
 
 ## Step 4 : Comparison KNN Clustering and Annotation
 
 ```R
 Save_comparison_plots(Clustering,PCA_data,Annotation_cells_renamed,Output_path,Method,Tissue,scaling_factor=1.5)
 ```
-<img src= 'Example_lymph_node/Atlas.png' width="700" height="400">
+<img src= 'data/Xenium_Lymph_node_KNN_atlas.png' width="700" height="400">
 
 
-<img src= 'Example_lymph_node/UMAP.png' width="1000" height="500">
+<img src= 'data/Xenium_Lymph_node_scimilarity_umap' width="1000" height="500">
 
 ```R
 Save_dendogram(Clustering,Annotation_cells_renamed,Output_path,Method,Tissue)
 ```
-<img src= 'Example_lymph_node/dendogram.png' width="500" height="700">
+<img src= 'data/dendogram.png' width="500" height="700">
 
 
 ### Notes:
