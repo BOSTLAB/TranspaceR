@@ -85,8 +85,8 @@ Variance_genes= Variance_computation$Selected_genes
 
 ### Zero proportion genes
 ```R
-Zero_score = Excess_zero_score_NB(Expression_file,Output_path,Method,Tissue)
-Zero_genes = names(Zero_score[order(Zero_score,decreasing = TRUE)])[1:100]
+Zero_score = Excess_zero_score_NB(Expression_file,Output_path,Method,Tissue,P_value_threshold=0.01,Delta_threshold = 0.01)
+Zero_genes = Zero_score_computation$Selected_genes
 ```
 <img src= 'Example_data/zero.png' width="500" height="500">
 
@@ -102,7 +102,7 @@ Geary_genes = Geary_computation$Selected_genes
 The plot depicting the correlation between the Spatial variance score and Total variance score can be saved in the output path. It shows a correlation of 0.302 between the two methods.
 
 ```R
-Save_geary_variance_plot(Variance_computation,Geary_computation,Output_path)
+Save_geary_variance_plot(Variance_computation,Geary_computation,Output_path,Method,Tissue)
 ```
 <img src= 'Example_data/geary_variance.png' width="500" height="500">
 
@@ -117,18 +117,20 @@ The selection of all the genes selected by at least one method is illustrated by
 ## Step 3 : Clustering and annotation results
 ### Clustering
 ```R
-Clustering_output = Clusters_maker(Expression_file,Shared_genes)
-  Clustering = Clustering_output$Clustering  
-  PCA_data = Clustering_output$PCA_data
-  Mean_expression = Clustering_output$Mean_expression
+Clustering_output = Clusters_maker(Expression_file, Shared_genes, K=30, metric_used="L2", nThreads = 20, resolution = 1)
+Clustering = Clustering_output$Clustering  
+PCA_data = Clustering_output$PCA_data
+Mean_expression = Clustering_output$Mean_expression
+Data_correction = Clustering_output$Data_correction
+Log2FC_table = Clustering_output$Log2FC_table
 ```
-The ouptuts of the function Clusters_maker() include the list of cluster affiliation, the PCA results and the mean expression of genes within each cluster file.
+The ouptuts of the function Clusters_maker() include the list of cluster affiliation, the PCA results, the log2FC table and the mean expression of genes within each cluster file.
 ```R
 Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue)
 ```
 ```R
 library(spatstat)
-Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tissue,scaling_factor=4)
+Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tissue,scaling_factor=1.5)
 ```
 <img src= 'Example_data/KNN_atlas.png' width="500" height="500">
 ### Scimilarity Annotation
@@ -150,18 +152,18 @@ Save_boxplot(Data_correction,object = Annotation_cells_renamed,gene = 'MS4A1', O
 ## Step 4 : Comparison KNN Clustering and Annotation
 
 ```R
-Save_comparison_plots(Clustering,PCA_data,Annotation_cells_renamed,Output_path,Method,Tissue,scaling_factor=1.5)
+Save_comparison_plots(Clustering,Annotation_cells_renamed,Umap_result,Output_path,Method,Tissue,scaling_factor=1.5)
 ```
 <div style="display: flex; justify-content: space-around;">
-     <img src='Example_data/KNN_atlas.png' width="500" height="700" alt="KNN Atlas">
      <img src='Example_data/Scimilarity_atlas.png' width="500" height="700" alt="Scimilarity Atlas">
+     <img src='Example_data/KNN_atlas.png' width="500" height="700" alt="KNN Atlas">
 </div>
 
 
 <img src= 'Example_data/umaps.png' width="1000" height="500">
 
 ```R
-Save_dendogram(Clustering,Annotation_cells_renamed,Output_path,Method,Tissue)
+Save_dendogram(Clustering,Mean_expression,Annotation_cells_renamed,Output_path,Method,Tissue)
 ```
 <img src= 'Example_data/dendogram.png' width="500" height="700">
 
