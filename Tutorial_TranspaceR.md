@@ -155,8 +155,8 @@ Save_boxplot(Data_correction,object = Annotation_cells_renamed,gene = 'MS4A1', O
 Save_comparison_plots(Clustering,Annotation_cells_renamed,Umap_result,Output_path,Method,Tissue,scaling_factor=1.5)
 ```
 <div style="display: flex; justify-content: space-around;">
-     <img src='Example_data/Scimilarity_atlas.png' width="500" height="700" alt="Scimilarity Atlas">
-     <img src='Example_data/KNN_atlas.png' width="500" height="700" alt="KNN Atlas">
+     <img src='Example_data/Scimilarity_atlas.png' width="500" height="500" alt="Scimilarity Atlas">
+     <img src='Example_data/KNN_atlas.png' width="500" height="500" alt="KNN Atlas">
 </div>
 
 
