@@ -51,7 +51,7 @@ print('Otsu's threshold is', QC2_results$Otsu_threshold)
 ```
 [1] Otsu's threshold is 53
 ```
-<img src= 'Example_data/QC.png' width="500" height="500">
+<img src= 'Example_data/QC.png' width="1000" height="500">
 These two plots are saved in the output path. The 2D density plot from QC1, which illustrates the relationship between the number of transcripts
 and the radius of cells,  the appropriate thresholds. 
 From QC2, Otsu's threshold for the number of transcripts per gene is automatically computed and utilized within the `curate_data` function as below.
@@ -145,15 +145,17 @@ Save_heatmap_markers(Expression_file, object = Annotation_cells_renamed, Output_
 ```R
 Save_boxplot(Data_correction,object = Annotation_cells_renamed,gene = 'MS4A1', Output_path,Method,Tissue)
 ```
-<img src= 'Example_data/boxplot_scimilarity.png' width="500" height="500">
+<img src= 'Example_data/boxplot.png' width="500" height="500">
 
 ## Step 4 : Comparison KNN Clustering and Annotation
 
 ```R
 Save_comparison_plots(Clustering,PCA_data,Annotation_cells_renamed,Output_path,Method,Tissue,scaling_factor=1.5)
 ```
-<img src= 'Example_data/KNN_atlas.png' width="500" height="700">
-<img src= 'Example_data/Scimilarity_atlas.png' width="500" height="700">
+<div style="display: flex; justify-content: space-around;">
+     <img src='Example_data/KNN_atlas.png' width="500" height="700" alt="KNN Atlas">
+     <img src='Example_data/Scimilarity_atlas.png' width="500" height="700" alt="Scimilarity Atlas">
+</div>
 
 
 <img src= 'Example_data/umaps.png' width="1000" height="500">
