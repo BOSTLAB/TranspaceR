@@ -2,7 +2,7 @@
  
  
  ## Overview
-This document presents the steps to analyze a subset  (square located between 1000 and 2000 um on both axis) of the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard)  from 10XGenomics using the TranSpaceR pipeline. 
+This document presents the steps to analyze a subset (square located between 2000 and 4000 um on both axis) of the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard)  from 10XGenomics using the TranSpaceR pipeline. 
 The analysis includes data curation, variable genes selection, clustering and visualization of results. 
 ## Directory Structure
 ```
@@ -16,9 +16,9 @@ The analysis includes data curation, variable genes selection, clustering and vi
           └── /Picture_pipeline
                    └── /Xenium
                           └── /Lymph_node
-                                └── Visual Plots
-                                └── Variogram_plots
-                                          └── Variogram and fitting plots
+                                └── Saved Plots
+                                └── /Variogram_plots
+                                          └── Variogram plots
 ```
 ## Loading and formatting
 ```R
@@ -37,11 +37,11 @@ dim(Expression_file)
 dim(Meta_data)
 ```
 ```
-[1] 20592    541
-[1] 20592     10
+[1] 39047    539
+[1] 39047     10
 ```
 The dataset is loaded, and the columns of `Expression_file` containing unfit data have been removed. We obtain a matrix that
-exclusively contains RNA counts for each gene (541) across individual cells (20592). The expression matrix and the metadata file have the same cells.
+exclusively contains RNA counts for each gene (541) across individual cells (39047). The expression matrix and the metadata file have the same cells.
 
 ## Step 1: Quality control
 
@@ -52,7 +52,7 @@ QC2_results =  QC_Gene_threshold(Expression_file,Meta_data,Method,Tissue,Output_
 print('Otsu's threshold is', QC2_results$Otsu_threshold)
 ```
 ```
-[1] Otsu's threshold is 45
+[1] Otsu's threshold is 53
 ```
 <img src= 'data/QC.png' width="500" height="500">
 These two plots are saved in the output path. The 2D density plot from QC1, which illustrates the relationship between the number of transcripts
@@ -62,17 +62,17 @@ From QC2, Otsu's threshold for the number of transcripts per gene is automatical
 
 ### Data curation 
 ```R
-Data_curated = Curate_data(Expression_file,Meta_data,QC2_results,min_lib_size=10,max_lib_size=400,min_cell_radius=2,max_cell_radius=10)
+Data_curated = Curate_data(Expression_file,Meta_data,QC2_results,min_lib_size=10,max_lib_size=250,min_cell_radius=2,max_cell_radius=8)
 Expression_file = Data_curated$Expression_file
 Meta_data = Data_curated$Meta_data
 dim(Expression_file)
 dim(Meta_data)
 ```
 ```R
-[1] 19958    375
-[1] 19958     11
+[1] 38804    376
+[1] 38804    11
 ```
-After curation, about 96% of initial cells and 69% of initial transcripts are kept for further analysis.
+After curation, about 99% of initial cells and 69% of initial transcripts are kept for further analysis.
 
 ## Step 2 : Gene selection
 
@@ -129,7 +129,10 @@ The ouptuts of the function Clusters_maker() include the list of cluster affilia
 ```R
 Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue)
 ```
-
+```R
+library(spatstat)
+Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tissue,scaling_factor=4)
+```
 ### Scimilarity Annotation
 ```R
   Annotation_cells_renamed = Load_scimilarity_results(path,celltype_threshold=0.01)
