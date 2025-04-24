@@ -130,11 +130,13 @@ library(spatstat)
 Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tissue,scaling_factor=1.5)
 ```
 <img src= 'Example_data/KNN_atlas.png' width="500" height="500">
+
 ### Scimilarity Annotation
 ```R
   Annotation_cells_renamed = Load_scimilarity_results(path,celltype_threshold=0.01)
   Save_annotation_plot(Annotation_cells_renamed,Output_path,Method,Tissue)
-``<img src= 'Example_data/annotation.png' width="500" height="500">
+```
+<img src= 'Example_data/annotation.png' width="500" height="500">
 
 ```R
 Save_heatmap_markers(Expression_file, object = Annotation_cells_renamed, Output_path,Method,Tissue)
