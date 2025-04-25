@@ -52,40 +52,56 @@ Excess_variance_ratio_NB = function(Expression_file,Output_path,Method,Tissue,P_
   Mu_values=quantile(Mean_expression,probs = seq(0,1,length.out = 30))
   if (!Too_many_cells) {
     cat("Computing the regular confidence interval....")
-    Table_CI_variance = c()
     
-    for (i in 1:length(Mu_values)) {
-      x = matrix(1,nrow = 1,ncol = N_simulations)
-      x = apply(x,MARGIN = 2,FUN = function(x) {rnbinom(mu = Mu_values[i],n =N_cells,size = 1/Estimated_s )})
-      Variance_estimated = apply(x,MARGIN = 2,FUN = var)
-      Variance_estimator  = var(Variance_estimated) #Variance of the variance estimator : don't get lost ! 
-      Table_variance = rbind(Table_variance,Variance_estimator)
-    }
+    VAriance_estimated <-sapply(Mu_values, function(mu) {
+      x = matrix(1, nrow = 1, ncol = N_simulations)
+      x = apply(x, MARGIN = 2, FUN = function(x) {
+        rnbinom(mu = mu, n = N_cells, size = 1 / Estimated_s)
+      })
+      Variance_estimated = apply(x, MARGIN = 2, FUN = var)
+    })
+    
+    Table_variance <- sapply(Mu_values, function(mu) {
+      x = matrix(1, nrow = 1, ncol = N_simulations)
+      x = apply(x, MARGIN = 2, FUN = function(x) {
+        rnbinom(mu = mu, n = N_cells, size = 1 / Estimated_s)
+      })
+      Variance_estimated = apply(x, MARGIN = 2, FUN = var)
+      var(Variance_estimated)  # Variance of the variance estimator
+    })
+    
     rownames(Table_variance) = c()
     cat(" done ! \n")
   }
+  
   if (Too_many_cells) {
     cat("Too many cells... confidence interval computed by sub-sampling")
     
     Table_variance <- foreach(i = 1:length(Mu_values), .combine = 'rbind') %dopar% {
+      N_cells_values = c(1000, 1500, 2000, 2500, 3000, 5000, 10000)
       
-      Variance_estimated = c()
-      N_cells_values = c(1000,1500,2000,2500,3000,5000,10000)
+      Variance_estimated <- sapply(N_cells_values, function(n_cells) {
+        x = matrix(1, nrow = 1, ncol = N_simulations)
+        x = apply(x, MARGIN = 2, FUN = function(x) {
+          rnbinom(mu = Mu_values[i], n = n_cells, size = 1 / Estimated_s)
+        })
+        apply(x, MARGIN = 2, FUN = var)
+      })
       
-      Table_variance_temp <- c()
-      for (j in 1:length(N_cells_values)) {
-        x = matrix(1,nrow = 1,ncol = N_simulations)
-        x = apply(x,MARGIN = 2,FUN = function(x) {rnbinom(mu = Mu_values[i],n =N_cells_values[j],size = 1/Estimated_s)})
-        Variance_estimated = apply(x,MARGIN = 2,FUN = var)
-        Variance_estimator = var(Variance_estimated)
-        Table_variance_temp = rbind(Table_variance_temp,Variance_estimator)
-      }
+      Table_variance_temp <- sapply(N_cells_values, function(n_cells) {
+        x = matrix(1, nrow = 1, ncol = N_simulations)
+        x = apply(x, MARGIN = 2, FUN = function(x) {
+          rnbinom(mu = Mu_values[i], n = n_cells, size = 1 / Estimated_s)
+        })
+        Variance_estimated = apply(x, MARGIN = 2, FUN = var)
+        var(Variance_estimated)
+      })
       mean_estimator = mean(Variance_estimated)
-      U = data.frame(Var = log(Table_variance_temp[,1]),
+      U = data.frame(Var = log(Table_variance_temp),
                      N = log(N_cells_values))
-      m_var= lm(Var~N,U,subset = is.finite(U$Var))
-      predicted_var = exp(predict.lm(object = m_var,newdata = data.frame(N=log(N_cells))))
-      return(c(predicted_var,mean_estimator,summary(m_var)$r.squared))
+      m_var = lm(Var ~ N, U, subset = is.finite(U$Var))
+      predicted_var = exp(predict.lm(object = m_var, newdata = data.frame(N = log(N_cells))))
+      return(c(predicted_var, mean_estimator, summary(m_var)$r.squared))
     }
     cat(" done ! \n")
   }

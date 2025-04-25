@@ -22,7 +22,7 @@ Save_tissue_visualization = function(Meta_data, object = Clustering, Output_path
   plot(ppp_temp[1,],main="",bty="n",cex = 0)
   for (k in 1:N_cluster) {
     temp_cell_type = unique(object)[k]
-    points(ppp_temp[object==temp_cell_type,],cex=scaling_factor,col=optimal_palette[k])
+    points(ppp_temp[object==temp_cell_type,],cex=scaling_factor,col=optimal_palette[k],bg = optimal_palette[k],pch =22)
   }
   dev.off()
 }

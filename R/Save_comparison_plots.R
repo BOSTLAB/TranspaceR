@@ -31,7 +31,7 @@ Save_comparison_plots = function(Clustering,Annotation_cells_renamed,Umap_result
   plot(ppp_temp[1,],main="",bty="n",cex = 0)
   for (k in 1:length(filtered_table$Clustering)) {
     temp_cell_type = filtered_table$Clustering[k]
-    points(ppp_temp[Clustering==temp_cell_type,],cex=scaling_factor,col=optimal_palette[k])
+    points(ppp_temp[Clustering==temp_cell_type,],cex=scaling_factor,col=optimal_palette[k],bg=optimal_palette[k],pch =22)
   }
   dev.off()
   
@@ -47,7 +47,7 @@ Save_comparison_plots = function(Clustering,Annotation_cells_renamed,Umap_result
   plot(ppp_temp[1,],main="",bty="n",cex = 0)
   for (k in 1:length(unique(filtered_table$Annotation_cells_renamed))) {
     temp_cell_type = unique(filtered_table$Annotation_cells_renamed)[k]
-    points(ppp_temp[Annotation_cells_renamed==temp_cell_type,], cex=scaling_factor, col=optimal_palette2[k])
+    points(ppp_temp[Annotation_cells_renamed==temp_cell_type,], cex=scaling_factor, col=optimal_palette2[k],bg=optimal_palette2[k],pch = 22)
   }
   dev.off()
   

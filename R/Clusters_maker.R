@@ -31,21 +31,13 @@ Clusters_maker = function(Expression_file, Shared_genes, K = 30, metric_used = "
   }
   Log2FC_list = sapply(genes, function(gene) calculate_log2fc(gene, Clustering), simplify = FALSE)
   Log2FC = as.data.frame(Log2FC_list)
-  result = data.frame(matrix(ncol = 3, nrow = ncol(Log2FC)*nrow(Log2FC)))
-  colnames(result) = c('Cluster','Gene','LogFC')
-  result$Cluster = rownames(Log2FC)
-  result$LogFC = unlist(Log2FC)
-  result$Gene = rep(colnames(Log2FC), each = nrow(Log2FC))
-  result <- result %>%
+  result <- Log2FC %>%
+    rownames_to_column(var = "Cluster") %>%
+    pivot_longer(-Cluster, names_to = "Gene", values_to = "logFC") %>%
     group_by(Cluster) %>%
-    top_n(5, LogFC) %>%
-    ungroup()
-  result_wide = data.frame(matrix(ncol = length(unique(result$Gene))+1, nrow = length(unique(result$Cluster))))
-  colnames(result_wide) = c('Cluster',unique(result$Gene))
-  result_wide$Cluster = unique(result$Cluster)
-  logfc_matrix <- tapply(result$LogFC, list(result$Cluster, result$Gene), FUN = function(x) x)
-  result = as.data.frame(logfc_matrix)
-  result = data.frame(Cluster = rownames(logfc_matrix),result)
+    top_n(5, logFC) %>%
+    ungroup() %>%
+    pivot_wider(names_from = Gene, values_from = logFC)
   col = unique(colnames(result))[-1]
   Log2FC = Log2FC[, col]
   Log2FC = as.data.frame(Log2FC)
