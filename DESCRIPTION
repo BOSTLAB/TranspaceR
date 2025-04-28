@@ -13,3 +13,24 @@ NeedsCompilation: no
 Packaged: 2025-04-15 10:28:36 UTC; pbost
 Author: Pierre Bost [aut, cre],
   Fatoumata Mangane [aut]
+Imports:
+     dplyr,
+     ggplot2,
+     ggthemes,
+     grDevices,
+     doParallel,
+     foreach,
+     imager,
+     gsignal,
+     OpenImageR,
+     doParallel,
+     foreach,
+     reshape2,
+     tidyr,
+     tibble,
+     data.table,
+     RColorBrewer,
+     MASS,
+     stats
+
+    
