@@ -31,6 +31,16 @@ Imports:
      data.table,
      RColorBrewer,
      MASS,
-     stats
-
-    
+     stats,
+     Matrix,
+     uwot,
+     UpSetR,
+     grid,
+     spatstat,
+     pheatmap,
+     gridExtra,
+     irlba,
+     RCDT,
+     tidyverse,
+     e1071,
+     sparseMatrixStats
