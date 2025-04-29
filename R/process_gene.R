@@ -118,6 +118,10 @@ process_gene <- function(gene_name,sum_by_cut,n_pad,save_plot,Output_path) {
     R2 <- 1 - (sum((filtered_x$Variogram - predict(best_model))^2) / sum((filtered_x$Variogram - mean(filtered_x$Variogram, na.rm = TRUE))^2))
    } 
   if (save_plot == TRUE){
+    output_dir <- paste0(Output_path, "Variogram_plots/")
+    if (!dir.exists(output_dir)) {
+      dir.create(output_dir, recursive = TRUE)
+    }
     pdf(paste0(Output_path,"Variogram_plots/",gene_name,".pdf"), useDingbats = FALSE, width = 8, height = 8)
     plot_variogram(Sill,Range,Alpha,Gamma,Nugget,Model,filtered_x,R2)
     dev.off()
