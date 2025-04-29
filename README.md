@@ -17,3 +17,5 @@ It can also be installed using devtools :
 ```R
 devtools::install_github("BOSTLAB/TranspaceR")
 ```
+### Tutorial
+For a typical example of analysis, check the markdown file located [here](Tutorial_TranspaceR.md)
