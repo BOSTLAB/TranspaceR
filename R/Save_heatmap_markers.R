@@ -12,7 +12,10 @@
 #' @param Tissue A character string indicating the type of tissue.
 #' @return  NULL This function does not return a value; it saves a PDF file.
 #' @export
-#' @import pheatmap
+#' @importFrom pheatmap pheatmap 
+#' @import dplyr
+#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_wider
 Save_heatmap_markers = function(Expression_file, object = Clustering,Output_path,Method,Tissue) {
   if (is.data.frame(Expression_file)) {
   mean_expression = aggregate(Expression_file, FUN = mean, by = list(object))

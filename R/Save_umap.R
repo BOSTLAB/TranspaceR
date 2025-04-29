@@ -9,7 +9,7 @@
 #' @param Tissue A character string indicating the type of tissue.
 #'
 #' @return NULL This function does not return a value; it saves a PNG file.
-
+#' @importFrom uwot umap
 #' @export
 
 Save_umap <- function(Umap_result,object = Clustering,Output_path,Method,Tissue) {

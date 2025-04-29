@@ -11,6 +11,7 @@
 #' @param Tissue A character string indicating the type of tissue.
 #' @param scaling_factor A numeric value that determines the size of the points in the plot. Default is 1.5.
 #' @return NULL This function does not return a value; it saves a PNG file.
+#' @importFrom spatstat.geom ppp
 #' @export
 #'  
 Save_tissue_visualization = function(Meta_data, object = Clustering, Output_path,Method,Tissue,scaling_factor=1.5) {

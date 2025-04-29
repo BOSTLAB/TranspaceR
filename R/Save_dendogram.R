@@ -13,10 +13,10 @@
 #'
 #' @return NULL This function does not return a value; it saves a PDF file.
 #' @export
+#' @import stats
+#' @import dplyr
 #' @import ggplot2
-#' @import ggthemes
-#' @import gridExtra 
-#' @import grid
+#' @importFrom gridExtra grid.arrange
 #' 
 Save_dendogram = function (Clustering,Mean_expression,Annotation_cells_renamed,Output_path,Method,Tissue) {
   pdf(paste0(Output_path,'_',Method,'_',Tissue,"_Dendrogram.pdf"),width = 6.5,height = 6.5,useDingbats = FALSE)

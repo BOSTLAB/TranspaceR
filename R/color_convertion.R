@@ -4,7 +4,8 @@
 #' @param max_scale An optional maximum scale value for normalization.
 #' @return A vector of colors corresponding to the input values.
 #' @export
-#' @import RColorBrewer
+#' 
+
 color_convertion=function(x,max_scale=NULL) {
   f <- colorRamp(c("white","yellow","orange","red"))
   x=as.numeric(x)

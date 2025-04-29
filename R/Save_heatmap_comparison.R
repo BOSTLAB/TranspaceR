@@ -11,8 +11,8 @@
 #'
 #' @return  NULL This function does not return a value; it saves a PDF file.
 #' @export
-#' @import pheatmap
-#' @import dplyr
+#' @importFrom pheatmap pheatmap 
+
 Save_heatmap_comparison = function (Clustering,Annotation_cells_renamed,Output_path,Method,Tissue) {
   ratio <- table(Clustering, Annotation_cells_renamed)/rowSums(table(Clustering, Annotation_cells_renamed))
   filtered_table <- as.data.frame(ratio)

@@ -21,6 +21,9 @@
 #' \item{Model}{A string indicating the name of the best fitting model.}
 #' \item{Variogram}{A list of variogram values used in the fitting process.}
 #' @export
+#' @importFrom reshape2 dcast
+#' @import stats
+#' @import dplyr
 #' 
 process_gene <- function(gene_name,sum_by_cut,n_pad,save_plot,Output_path) {
   #matrix creation

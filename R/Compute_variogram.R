@@ -25,12 +25,12 @@
 #'        - AIC
 #'        - Model
 #'        - Variogram values
-#' @export
-#' @import tidyr
-#' @import doParallel
-#' @import foreach
 #' @import dplyr
-#' @import data.table
+#' @importFrom tidyr pivot_wider
+#' @importFrom data.table as.data.table
+#' @export
+#' 
+
 
 
 Compute_variogram = function(Expression_file,Meta_data,automatic_pad=TRUE,n_pad=20,save_plot=FALSE,Output_path,ncores= 10) {

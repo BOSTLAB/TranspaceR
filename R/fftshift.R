@@ -4,6 +4,7 @@
 #' @param dim An optional dimension to perform the shift (1 for rows, 2 for columns, -1 for both).
 #' @return The shifted matrix.
 #' @export
+#' @import gsignal
 #' 
 fftshift <- function(input_matrix, dim = -1) {
   

@@ -15,10 +15,12 @@
 #' @return A list containing:
 #'      - Selected_genes: A character vector of gene names that show a significant excess variance ratio based on the specified thresholds.
 #'      - Excess_variance_ratio: A numeric vector of excess variance ratios for each gene in the expression dataset.
-#'
+#' @importFrom sparseMatrixStats colVars
+#' @import Matrix
+#' @import doParallel
+#' @import foreach
 #' @export
-#' @import MASS
-#' @import N2R
+
 Excess_variance_ratio_NB = function(Expression_file,Output_path,Method,Tissue,P_value_threshold = 0.01,Ratio_threshold = 1.5) {
   
   if (is.data.frame(Expression_file)) {

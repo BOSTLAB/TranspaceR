@@ -15,13 +15,14 @@
 #'    \item{Selected_genes}{A character vector of gene names that are significant based on the adjusted p-value threshold.}
 #'    \item{P_values}{A numeric vector of adjusted p-values for each gene.}
 #' @export
-#' 
-#' @import igraph
-#' @import dplyr
-#' @import e1071
+#' @importFrom e1071 kurtosis
+#' @importFrom RCDT delaunay
+#' @importFrom igraph graph_from_edgelist
+#' @importFrom igraph as_adjacency_matrix
+#' @import Matrix
 Geary_C_score = function(Expression_file,Meta_data,Output_path,Method,Tissue,pvalue_threshold = 0.01 ) {   
   
-  temp_delaunay = RCDT::delaunay(cbind(Meta_data$cell_centroid_x,Meta_data$cell_centroid_y))
+  temp_delaunay = delaunay(cbind(Meta_data$cell_centroid_x,Meta_data$cell_centroid_y))
   graph_delaunay = graph_from_edgelist(el = temp_delaunay$edges[,-3],directed = FALSE )
   spatial_weight_matrix = as_adjacency_matrix(graph_delaunay,sparse = TRUE)
   

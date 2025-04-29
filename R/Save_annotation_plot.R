@@ -8,10 +8,10 @@
 #' @param Method A character string indicating the spatial method used.
 #' @param Tissue A character string indicating the type of tissue.
 #' @return  NULL This function does not return a value; it saves a PDF file.
-#' @export
 #' @import ggplot2
 #' @import ggthemes
-
+#' @export
+#' 
 #' 
 Save_annotation_plot = function (Annotation_cells_renamed,Output_path,Method,Tissue){
   category_freq= (table(Annotation_cells_renamed)/length(Annotation_cells_renamed))*100

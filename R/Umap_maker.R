@@ -9,9 +9,9 @@
 #' @return A matrix of UMAP results.
 #' 
 #' @export
-#' @import uwot
+#' @importFrom uwot umap
 Umap_maker = function(PCA_data,n_neighbors =30, metric = "correlation"){
-  Umap_result <- uwot::umap(PCA_data$u, n_neighbors = n_neighbors, metric = metric, verbose = TRUE)
+  Umap_result <- umap(PCA_data$u, n_neighbors = n_neighbors, metric = metric, verbose = TRUE)
   return(Umap_result)
 }
 

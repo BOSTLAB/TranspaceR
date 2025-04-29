@@ -4,6 +4,7 @@
 #' @param scaling_factor A vector representing the area of each cell.
 #' @return A matrix of normalized cell data.
 #' @export
+#' 
 C_normalisation = function(y, scaling_factor){
   Cell_size = scaling_factor  # Area of cell
   Tau_parameter = colMeans(y/Cell_size)

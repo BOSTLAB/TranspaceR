@@ -12,6 +12,8 @@
 #' @param scaling_factor A numeric value for scaling the point sizes in the plots. Default is 2.
 #' @return  NULL This function does not return a value; it saves PNG files.
 #' @export
+#' @importFrom spatstat.geom ppp
+#' @import dplyr
 #' 
 Save_comparison_plots = function(Clustering,Annotation_cells_renamed,Umap_result,Output_path,Method,Tissue,scaling_factor=2) {
   ppp_temp = ppp(x = Meta_data$cell_centroid_x,y = Meta_data$cell_centroid_y,

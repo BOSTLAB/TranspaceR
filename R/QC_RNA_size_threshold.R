@@ -11,7 +11,6 @@
 #' @return  NULL This function does not return a value; it saves a PDF file.
 #' @export
 #' @import ggplot2
-#' @import stats
 #' @import ggthemes
 #' 
 QC_RNA_size_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path) {

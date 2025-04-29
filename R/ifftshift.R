@@ -6,6 +6,7 @@
 #' @param dim An integer indicating the dimension along which to perform the shift.
 #'          -1 for both dimensions, 1 for rows, and 2 for columns.
 #' @return A matrix after applying the inverse FFT shift.
+#' @import gsignal
 #' @export
 #' 
 ifftshift <- function(input_matrix, dim = -1) {

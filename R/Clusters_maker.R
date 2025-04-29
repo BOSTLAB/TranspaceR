@@ -9,8 +9,12 @@
 #' @return A list containing PCA data, corrected data, cluster assignments, mean expression, and log2 fold change table.
 #' @export
 #' @import dplyr
-#' @import irlba
-#' @import tibble
+#' @importFrom tibble rownames_to_column
+#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_wider
+#' @importFrom irlba irlba 
+#' 
+
 Clusters_maker = function(Expression_file, Shared_genes, K = 30, metric_used = "L2", nThreads = 12, resolution = 1) {
   if (is.data.frame(Expression_file)){
     Data_correction = Expression_file[, Shared_genes]

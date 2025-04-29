@@ -5,9 +5,10 @@
 #' @param im A matrix representing the image for which the variogram map is to be computed.
 #' @return A matrix representing the variogram map of the input image.
 #' @export
-#' @import imager
 #' @import gsignal
+#' @import imager
 #' @import OpenImageR
+
 Get_variogram_map = function(im) {
   im_index = im
   im_index[!is.na(im_index)] = 1

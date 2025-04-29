@@ -7,9 +7,7 @@
 #'
 #' @return A vector of unique shared genes across the provided gene sets.
 #'
-#' @import UpSetR
-#' @import grDevices
-#' @import utils
+#' @importFrom UpSetR upset 
 #' @export
 
 Select_genes = function (Selected_objects =list(Variance_genes,Zero_genes),Selected_names = c('Variance_genes','Zero_genes')) {

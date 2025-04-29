@@ -7,7 +7,10 @@
 #' @param resolution A numeric value for the resolution parameter in clustering.
 #' @return A character vector indicating the cluster membership for each cell.
 #' @export
-#' 
+#' @importFrom igraph cluster_louvain
+#' @importFrom igraph membership
+#' @importFrom igraph graph_from_adjacency_matrix
+#' @importFrom N2R Knn
 Cell_clustering_function = function(Data_correction, K, metric_used, nThreads, resolution) {
   KNN_matrix = Knn(as.matrix(Data_correction), k = K, verbose = TRUE, indexType = metric_used, nThreads = nThreads)
   KNN_matrix = t(KNN_matrix) + KNN_matrix
