@@ -7,6 +7,16 @@ TranspaceR is an R-package dedicated to process various spatial data to establis
 
 ## Installation
 
+### Prerequisites
+
+TranspaceR depends on **`sparseMatrixStats`** from Bioconductor. Before installing TranspaceR, please ensure that this dependency is installed.
+
+To install `sparseMatrixStats`:
+
+```R
+install.packages("BiocManager")
+BiocManager::install("sparseMatrixStats")
+```
 TranspaceR can be installed from the source file :
 
 ```R
