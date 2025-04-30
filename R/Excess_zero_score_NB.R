@@ -20,30 +20,34 @@
 #' 
 Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P_value_threshold = 0.01, Delta_threshold = 0.01) {
   
-  Total_gene_expression= colSums(Expression_file)
-  Proportion_zero= colSums(Expression_file == 0) / nrow(Expression_file)
+  Total_gene_expression = colSums(Expression_file)
+  Proportion_zero = colSums(Expression_file==0)/nrow(Expression_file)
   Mean_expression = colMeans(Expression_file)
-  Var_expression =- apply(Expression_file, FUN = var, MARGIN = 2)
+  Mean_expression[is.na(Mean_expression)]
+  Var_expression = apply(Expression_file,FUN = var,MARGIN = 2)
+  #Basic model using a NB distribution as background hypothesis (with a constant theta/over-dispersion parameter)
+  #The probability of observing a zero is (theta/(mu+theta))^theta, for simpler fitting : log transform
   
-  theta_init = median(1 / ((Var_expression - Mean_expression) / (Mean_expression^2)))
-  m_null <- nls(
-    log(Proportion_zero) ~ theta * log(theta) - theta * log(theta + Mean_expression),
-    algorithm = "port",
-    lower = 0,
-    start = list(theta = theta_init),
-    subset = Proportion_zero > 0 & Proportion_zero < 1
-  )
+  theta_init = median(1/((Var_expression-Mean_expression)/(Mean_expression^2)))
+  m_null = nls(log(Proportion_zero) ~ theta*log(theta)-theta*log(theta+Mean_expression),algorithm = "port",
+               lower =0,start = list(theta=theta_init),subset = Proportion_zero>0 & Proportion_zero<1) 
+  theta = coef(m_null)
   
-  theta <- coef(m_null)
-  Expected_proportion_zeros=(theta / (theta + Mean_expression))^theta
-  Delta_excess_zero=Proportion_zero - Expected_proportion_zeros
-  Mu_values= quantile(Mean_expression, probs = seq(0, 1, length.out = 30))
+  Expected_proportion_zeros = (theta/(theta+Mean_expression))^theta
+  Delta_excess_zero = Proportion_zero-Expected_proportion_zeros
+  Mu_values=quantile(Mean_expression,probs = seq(0,1,length.out = 30))
   
-  N_cells=nrow(Expression_file)
-  N_cell_threshold= 10000
-  Too_many_cells=N_cells > N_cell_threshold
-  N_simulations=500
-  Estimated_s= coef(m_null)
+  N_cells = nrow(Expression_file)
+  N_cell_threshold = 10000
+  Too_many_cells = FALSE
+  
+  N_simulations = 500
+  Estimated_s = coef(m_null)
+  
+  if (N_cells>N_cell_threshold) {
+    Too_many_cells = TRUE
+  }
+  
   
   if (!Too_many_cells) {
     cat("Computing the regular confidence interval....\n")
