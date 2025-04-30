@@ -3,45 +3,44 @@ Type: Package
 Title: Statistical analysis of Spatial transcriptomic data
 Version: 1.0.0
 Authors@R: 
-     c(person("Pierre", "Bost", email = "pierre.bost@curie.fr", role = c("aut", "cre")),
-     person("Fatoumata", "Mangane", email = "fatoumatamangane1@gmail.com", role = c("aut"))
-     )
-Maintainer: <fatoumatamangane1@gmail.com>
+    c(
+      person("Pierre", "Bost", email = "pierre.bost@curie.fr", role = c("aut", "cre")),
+      person("Fatoumata", "Mangane", email = "fatoumatamangane1@gmail.com", role = c("aut"))
+    )
+Maintainer: Fatoumata Mangane <fatoumatamangane1@gmail.com>
 Encoding: UTF-8
 RoxygenNote: 7.3.2
 NeedsCompilation: no
 Packaged: 2025-04-15 10:28:36 UTC; pbost
-Author: Pierre Bost [aut, cre],
-  Fatoumata Mangane [aut]
 Imports:
-     dplyr,
-     ggplot2,
-     ggthemes,
-     grDevices,
-     doParallel,
-     foreach,
-     imager,
-     gsignal,
-     OpenImageR,
-     doParallel,
-     foreach,
-     reshape2,
-     tidyr,
-     tibble,
-     data.table,
-     RColorBrewer,
-     MASS,
-     stats,
-     N2R,
-     Matrix,
-     uwot,
-     UpSetR,
-     grid,
-     spatstat,
-     pheatmap,
-     gridExtra,
-     irlba,
-     RCDT,
-     tidyverse,
-     e1071,
-     stats
+    dplyr,
+    ggplot2,
+    ggthemes,
+    grDevices,
+    doParallel,
+    foreach,
+    imager,
+    gsignal,
+    OpenImageR,
+    reshape2,
+    tidyr,
+    tibble,
+    data.table,
+    RColorBrewer,
+    MASS,
+    stats,
+    N2R,
+    Matrix,
+    uwot,
+    UpSetR,
+    grid,
+    spatstat,
+    pheatmap,
+    gridExtra,
+    irlba,
+    RCDT,
+    tidyverse,
+    e1071,
+    sparseMatrixStats
+Remotes:
+    bioc::sparseMatrixStats
