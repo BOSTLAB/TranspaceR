@@ -42,5 +42,3 @@ Imports:
     tidyverse,
     e1071,
     sparseMatrixStats
-Remotes:
-    bioc::sparseMatrixStats
