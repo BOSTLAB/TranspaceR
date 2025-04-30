@@ -5,7 +5,7 @@ TranspaceR is an R-package dedicated to process various spatial data to establis
 1. **KNN-Based Clustering**: We employ a K-Nearest Neighbors (KNN) approach to cluster cells based on their spatial transcriptomic profiles.
 2. **Cell Annotation**: Cell types are annotated using the Scimilarity tool, which documentation's can be found [here](https://genentech.github.io/scimilarity/index.html).
 
-## Installation
+
 
 ### Prerequisites
 
@@ -17,6 +17,7 @@ To install `sparseMatrixStats`:
 install.packages("BiocManager")
 BiocManager::install("sparseMatrixStats")
 ```
+## Installation
 TranspaceR can be installed from the source file :
 
 ```R
@@ -27,5 +28,5 @@ It can also be installed using devtools :
 ```R
 devtools::install_github("BOSTLAB/TranspaceR")
 ```
-### Tutorial
+## Tutorial
 For a typical example of analysis, check the markdown file located [here](Tutorial_TranspaceR.md)
