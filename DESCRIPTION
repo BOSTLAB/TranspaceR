@@ -44,5 +44,4 @@ Imports:
      RCDT,
      tidyverse,
      e1071,
-     sparseMatrixStats,
      stats
