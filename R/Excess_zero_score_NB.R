@@ -115,6 +115,7 @@ Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P
   points(Total_gene_expression[Selected_genes],Proportion_zero[Selected_genes],pch=21,bg="red")
   text(Total_gene_expression[Genes_to_plot],Proportion_zero[Genes_to_plot],
        labels = Genes_to_plot,pos=3,cex=0.6,offset = 0.1)
+  title(main = paste0(Method,"_",Tissue), cex.sub = 0.6)
   dev.off()
   gc()
   return(list(Selected_genes = Selected_genes, Excess_zero_score = Delta_excess_zero[colnames(Expression_file)]
