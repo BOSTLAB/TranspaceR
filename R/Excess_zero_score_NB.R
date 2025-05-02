@@ -106,15 +106,17 @@ Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P
   Selected_genes= names(which(P_values_corrected < P_value_threshold & Delta_excess_zero > Delta_threshold))
   Genes_to_plot= Selected_genes
   
-  pdf(paste0(Output_path, Method, "_", Tissue, "_proportion_zero.pdf"),width = 6.5, height = 6.5, useDingbats = FALSE)
-  par(fig = c(0, 1, 0, 1), las = 1, bty = 'l', cex.lab = 0.7, cex.axis = 0.7)
-  plot(Total_gene_expression, Proportion_zero,log = "x", xlab = "Total gene expression", ylab = "Proportion 0",ylim = c(0, 1), yaxs = "i", cex.lab = 1.15)
-  points(Total_gene_expression[order(Total_gene_expression)],Expected_proportion_zeros[order(Total_gene_expression)],type = "l", lwd = 2, col = "blue", lty = 2)
-  points(Total_gene_expression[Selected_genes], Proportion_zero[Selected_genes], pch = 21, bg = "red")
-  text(Total_gene_expression[Genes_to_plot], Proportion_zero[Genes_to_plot],labels = Genes_to_plot, pos = 3, cex = 0.6, offset = 0.1)
+  pdf(paste0(Output_path,Method,"_",Tissue,"_proportion_zero.pdf"),width = 6.5,height = 6.5,useDingbats = FALSE)
+  par(fig=c(0,1,0,1),las=1,bty='l',cex.lab = 0.7, cex.axis = 0.7)
+  plot(Total_gene_expression,Proportion_zero,log="x",xlab="Total gene expression",ylab="Proportion 0",
+       ylim=c(0,1),yaxs="i",cex.lab=1.15)
+  points(Total_gene_expression[order(Total_gene_expression)],Expected_proportion_zeros[order(Total_gene_expression)]
+         ,type = "l",lwd=2,col="blue",lty=2)
+  points(Total_gene_expression[Selected_genes],Proportion_zero[Selected_genes],pch=21,bg="red")
+  text(Total_gene_expression[Genes_to_plot],Proportion_zero[Genes_to_plot],
+       labels = Genes_to_plot,pos=3,cex=0.6,offset = 0.1)
   dev.off()
   gc()
-  
   return(list(Selected_genes = Selected_genes, Excess_zero_score = Delta_excess_zero[colnames(Expression_file)]
   ))
 }
