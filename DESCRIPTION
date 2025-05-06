@@ -41,5 +41,4 @@ Imports:
     RCDT,
     tidyverse,
     e1071
-BiocViews:
-    sparseMatrixStats
+
