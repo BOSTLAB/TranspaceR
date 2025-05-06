@@ -40,5 +40,6 @@ Imports:
     irlba,
     RCDT,
     tidyverse,
-    e1071,
+    e1071
+BiocViews:
     sparseMatrixStats
