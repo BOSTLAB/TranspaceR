@@ -54,7 +54,7 @@ Excess_variance_ratio_NB = function(Expression_file,Output_path,Method,Tissue,P_
   if (!Too_many_cells) {
     cat("Computing the regular confidence interval....")
     
-    VAriance_estimated <-sapply(Mu_values, function(mu) {
+    Variance_estimated <-sapply(Mu_values, function(mu) {
       x = matrix(1, nrow = 1, ncol = N_simulations)
       x = apply(x, MARGIN = 2, FUN = function(x) {
         rnbinom(mu = mu, n = N_cells, size = 1 / Estimated_s)
