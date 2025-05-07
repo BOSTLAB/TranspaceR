@@ -7,9 +7,20 @@
 #' 
 
 colvars_sparse <- function(mat) {
-  variances = apply(mat, 2, function(col_data) {
-    col_mean = mean(col_data, na.rm = TRUE)
-    mean((col_data - col_mean)^2, na.rm = TRUE)
-  })
+  means = colMeans(mat)
+  squared_diff = mat
+  for (j in 1:ncol(mat)) {
+    start= mat@p[j]+1
+    end= mat@p[j+1]
+    if (start <= end) {
+      idx=start:end
+      squared_diff@x[idx]=(mat@x[idx]-means[j])^2 }}
+  variances= numeric(ncol(mat))
+  for (j in 1:ncol(mat)) {
+    nnz_j= mat@p[j+1]- mat@p[j]
+    n = nrow(mat)
+    sum_sq_diff= sum(squared_diff@x[(mat@p[j]+1):mat@p[j+1]])
+    mean_sq_diff=(sum_sq_diff+(n-nnz_j)*means[j]^2)/n
+    variances[j]= mean_sq_diff }
   return(variances)
 }
