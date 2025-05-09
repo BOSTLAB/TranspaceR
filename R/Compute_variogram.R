@@ -131,6 +131,9 @@ Compute_variogram = function(Expression_file,Meta_data,automatic_pad=TRUE,n_pad=
        pos=3)
   Selected = gene_names[which(var_parameters$R2 > 0.85 & var_parameters$`C/C+n` > 0.3 & var_parameters$`Total variance (C+n)` > 0.5) ]  #
   dev.off()
+  var_parameters$Vario_values <- sapply(var_parameters$Vario_values, function(x) paste(unlist(x), collapse = ", "))
+  var_parameters$Model <- sapply(var_parameters$Model, function(x) paste(unlist(x), collapse = ", "))
+  write.csv(var_parameters,paste0(Output_path,"variogram_fitting_parameters.csv"))
   return(list(Selected_genes = Selected,Parameters = var_parameters))
 }
 

@@ -15,12 +15,12 @@
 #' @importFrom spatstat.geom owin
 #' @export
 #'  
-Save_tissue_visualization = function(Meta_data, object = Clustering, Output_path,Method,Tissue,scaling_factor=1.5) {
+Save_tissue_visualization = function(Meta_data, object = Clustering, Output_path,Method,Tissue,name_object = 'Clustering',scaling_factor=1.5) {
   ppp_temp = ppp(x = Meta_data$cell_centroid_x,y = Meta_data$cell_centroid_y,
                  window = owin(xrange = range(Meta_data$cell_centroid_x),yrange = range(Meta_data$cell_centroid_y)))
   N_cluster = length(unique(object))
   optimal_palette = rainbow(N_cluster)
-  png(paste0(Output_path,Method,"_",Tissue,"_atlas.png"),width = 4000,height = 4000)
+  png(paste0(Output_path,Method,"_",Tissue,'_',name_object,"_atlas.png"),width = 4000,height = 4000)
   plot(ppp_temp[1,],main="",bty="n",cex = 0)
   for (k in 1:N_cluster) {
     temp_cell_type = unique(object)[k]

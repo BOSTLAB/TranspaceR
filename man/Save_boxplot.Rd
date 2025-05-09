@@ -10,7 +10,8 @@ Save_boxplot(
   gene = "MS4A1",
   Output_path,
   Method,
-  Tissue
+  Tissue,
+  name_object = "Clustering"
 )
 }
 \arguments{

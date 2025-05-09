@@ -10,6 +10,7 @@ Save_tissue_visualization(
   Output_path,
   Method,
   Tissue,
+  name_object = "Clustering",
   scaling_factor = 1.5
 )
 }

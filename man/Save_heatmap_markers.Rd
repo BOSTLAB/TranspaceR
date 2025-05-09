@@ -9,7 +9,8 @@ Save_heatmap_markers(
   object = Clustering,
   Output_path,
   Method,
-  Tissue
+  Tissue,
+  name_object = "Clustering"
 )
 }
 \arguments{

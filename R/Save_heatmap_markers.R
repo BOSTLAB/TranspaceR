@@ -16,7 +16,7 @@
 #' @import dplyr
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
-Save_heatmap_markers = function(Expression_file, object = Clustering,Output_path,Method,Tissue) {
+Save_heatmap_markers = function(Expression_file, object = Clustering, Output_path,Method,Tissue,name_object = 'Clustering') {
   if (is.data.frame(Expression_file)) {
   mean_expression = aggregate(Expression_file, FUN = mean, by = list(object))
   rownames(mean_expression) <- mean_expression[[1]]
@@ -48,7 +48,7 @@ Save_heatmap_markers = function(Expression_file, object = Clustering,Output_path
   col = unique(colnames(result))[-1]
   Log2FC = Log2FC[, col]
   Log2FC = as.data.frame(Log2FC)
-  pdf(paste0(Output_path,Method,'_',Tissue,"_markers_heatmap.pdf"), useDingbats = FALSE, width = 12, height = 12)
+  pdf(paste0(Output_path,Method,'_',Tissue,'_', name_object, "_markers_heatmap.pdf"), useDingbats = FALSE, width = 12, height = 12)
   p <- pheatmap(t(scale(mean_expression[rownames(Log2FC),colnames(Log2FC)])), clustering_method = 'ward.D')
   print(p)
   dev.off()

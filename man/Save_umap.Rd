@@ -4,7 +4,14 @@
 \alias{Save_umap}
 \title{Save UMAP Plot}
 \usage{
-Save_umap(Umap_result, object = Clustering, Output_path, Method, Tissue)
+Save_umap(
+  Umap_result,
+  object = Clustering,
+  Output_path,
+  Method,
+  Tissue,
+  name_object = "Clustering"
+)
 }
 \arguments{
 \item{Umap_result}{A matrix containing UMAP results.}
