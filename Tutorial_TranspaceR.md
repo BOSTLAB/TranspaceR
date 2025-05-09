@@ -126,14 +126,15 @@ Log2FC_table = Clustering_output$Log2FC_table
 ```
 The ouptuts of the function Clusters_maker() include the list of cluster affiliation, the PCA results, the log2FC table and the mean expression of genes within each cluster file.
 ```R
-Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue)
+Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue,name_object = 'Clustering')
 ```
 ```R
 library(spatstat)
-Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tissue,scaling_factor=1.5)
+Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tissue,name_object = 'Clustering',scaling_factor=1.5)
 ```
 <img src= 'Example_data/KNN_atlas.png' width="500" height="500">
 
+Make sure the 'name_object' parameter is never 'KNN' as it is the name used in the comparison plot output. 
 ### Scimilarity Annotation
 ```R
   Annotation_cells_renamed = Load_scimilarity_results(path,celltype_threshold=0.01)
@@ -142,14 +143,16 @@ Save_tissue_visualization(Meta_data,object = Clustering, Output_path,Method,Tiss
 <img src= 'Example_data/annotation.png' width="500" height="500">
 
 ```R
-Save_heatmap_markers(Expression_file, object = Annotation_cells_renamed, Output_path,Method,Tissue)
+Save_heatmap_markers(Expression_file, object = Annotation_cells_renamed, Output_path,Method,Tissue,name_object = 'Annotation')
 ```
 <img src= 'Example_data/heatmap_scimilarity.png' width="700" height="700">
 
 ```R
-Save_boxplot(Data_correction,object = Annotation_cells_renamed,gene = 'MS4A1', Output_path,Method,Tissue)
+Save_boxplot(Data_correction,object = Annotation_cells_renamed,gene = 'MS4A1', Output_path,Method,Tissue,name_object = 'Annotation')
 ```
 <img src= 'Example_data/boxplot.png' width="500" height="500">
+
+Make sure the 'name_object' parameter is never 'Scimilarity' as it is the name_used in the comparison plot output.
 
 ## Step 4 : Comparison KNN Clustering and Annotation
 
@@ -170,6 +173,6 @@ Save_dendogram(Clustering,Mean_expression,Annotation_cells_renamed,Output_path,M
 <img src= 'Example_data/dendogram.png' width="500" height="700">
 
 
-### Notes:
+### Notes: 
 - Some dependencies can be missed when loading the package and should be installed manually.
 - The analysis can be expanded with additional steps or insights as needed.
