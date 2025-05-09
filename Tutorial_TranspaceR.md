@@ -27,6 +27,9 @@ Tissue = "Lymph_node"
 Expression_file = read.delim(paste(path,"Xenium_Lymph_node_ExprMat.csv",sep =""),sep=",")
 Meta_data = read.delim(paste(path,"Xenium_Lymph_node_Metadata.csv",sep =""),sep=",")
 
+# In Meta_data, x and y coordinates MUST be named respectively 'cell_centroid_x' and 'cell_centroid_y'
+# colnames(Meta_data)[c(3,4)] <- c("cell_centroid_x", "cell_centroid_y")
+
 dim(Expression_file)
 dim(Meta_data)
 ```
