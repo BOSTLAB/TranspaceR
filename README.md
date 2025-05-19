@@ -1,4 +1,7 @@
+
+
 # TranspaceR
+<img src= 'logo_TranspaceR.png' width="1000" height="1000">
 
 TranspaceR is an R-package dedicated to process various spatial data to establish an atlas of Cellular Spatial Structures. This project focuses on two primary analyses:
 
