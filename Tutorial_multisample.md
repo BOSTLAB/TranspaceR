@@ -1,5 +1,5 @@
 ## Overview
-This document presents the steps to analyze 4 samples from the dataset [Xenium acute neonatal lung injury](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9002291) using the TranspaceR pipeline. 
+This document presents the steps to analyze 4 samples from the reduced dataset [Xenium Acute Neonatal Lung injury - Slide 2 ](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297945) using the TranspaceR pipeline. 
 
 ## Loading
 ```R
