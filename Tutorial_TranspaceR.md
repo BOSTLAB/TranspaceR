@@ -174,7 +174,7 @@ Save_dendogram(Clustering,Mean_expression,Annotation_cells_renamed,Output_path,M
 ```
 <img src= 'Example_data/dendogram.png' width="500" height="700">
 
-
+### A tutorial to analyze multiple samples is available [here](Tutorial_multisample.md)
 ### Notes: 
 - Some dependencies can be missed when loading the package and should be installed manually.
 - The analysis can be expanded with additional steps or insights as needed.
