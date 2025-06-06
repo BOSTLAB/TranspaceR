@@ -21,3 +21,4 @@ devtools::install_github("BOSTLAB/TranspaceR")
 ```
 ## Tutorial
 For a typical example of analysis, check the markdown file located [here](Tutorial_TranspaceR.md)
+For an example of multi-sample analysis, check [here](Tutorial_multisample.md)
