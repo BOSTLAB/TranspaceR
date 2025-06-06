@@ -136,7 +136,7 @@ Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tis
 
 ```R
 
-Save_tissue_visualization(Meta_data,object = Clustering,Output_path,Method,Tissue,name_object = 'Clustering',scaling_factor=1.5)
+Save_tissue_visualization(Meta_data,object = Clustering,Output_path,Method,Tissue,name_object = 'Clustering',scaling_factor=0.4)
 ```
 
 <img src= 'Example_data/KNN_atlas_multisample.png' width="500" height="500">
