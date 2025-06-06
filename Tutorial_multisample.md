@@ -122,7 +122,7 @@ Variogram_genes = unique(unlist(Variogram_computation))
 From here, we resume performing the analysis on the whole dataset. 
 
 ```R
-Clustering_output = Clusters_maker(Expression_file, Shared_genes, K=30, metric_used="L2", nThreads = 20, resolution = 1)
+Clustering_output = Clusters_maker(Expression_file, Shared_genes, K=50, metric_used="L2", nThreads = 20, resolution = 1)
 Clustering = Clustering_output$Clustering  
 PCA_data = Clustering_output$PCA_data
 Mean_expression = Clustering_output$Mean_expression
