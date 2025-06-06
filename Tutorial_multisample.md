@@ -104,7 +104,7 @@ Computing Geary's C score for each gene
 # To select the spatially variable genes from all samples
 Geary_genes = unique(unlist(Geary_computation))
 ```
-<img src= 'Example_data/geary_multisample.png' width="1000" height="500">
+<img src= 'Example_data/geary_multisample.png' width="1000" height="1000">
 
 The Upset plot of the shared geary selected genes across the samples is saved in the output path.
 <img src= 'Example_data/upset_plot_geary.png' width="500" height="500">
