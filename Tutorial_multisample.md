@@ -1,5 +1,5 @@
 ## Overview
-This document presents the steps to analyze 4 samples from the dataset [Xenium acute neonatal lung injury](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9002291) using the TranspaceR pipeline. 
+This document presents the steps to analyze 4 samples from the dataset [Xenium acute neonatal lung injury](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM9002291) using the TranspaceR pipeline. 
 
 ## Loading
 ```R
