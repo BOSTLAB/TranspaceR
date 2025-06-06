@@ -117,11 +117,10 @@ Variogram_genes = unique(unlist(Variogram_computation))
 ```
 <img src= 'Example_data/fitting_multisample.png' width="500" height="500">
 
-## Step 3 : Clustering and annotation results
+## Step 3 :Clustering
 
 From here, we resume performing the analysis on the whole dataset. 
 
-### Clustering
 ```R
 Clustering_output = Clusters_maker(Expression_file, Shared_genes, K=30, metric_used="L2", nThreads = 20, resolution = 1)
 Clustering = Clustering_output$Clustering  
