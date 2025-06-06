@@ -110,7 +110,7 @@ The Upset plot of the shared geary selected genes across the samples is saved in
 <img src= 'Example_data/upset_plot_geary.png' width="500" height="500">
 
 #### Variogram 
-For each sample the fitting parameters and distribution are saved, a variogram plots folder is created.
+For each sample the fitting parameters and distribution are saved, a variogram plots folder is created. The Upset plot of the shared variogram selected genes across the samples is saved.
 ```R
 Variogram_computation = Compute_variogram_multiple(Expression_file,Meta_data,automatic_pad=FALSE,n_pad=100,save_plot=TRUE,ncores=5,Output_path)
 Variogram_genes = unique(unlist(Variogram_computation))
