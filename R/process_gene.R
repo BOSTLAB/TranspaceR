@@ -39,7 +39,7 @@ process_gene <- function(gene_name,sum_by_cut,n_pad,save_plot,Output_path) {
     group_by(group) %>%
     summarise(
       Variogram = mean(Variogram, na.rm = TRUE),
-  r = max(r, na.rm = TRUE))
+      r = max(r, na.rm = TRUE))
   filtered_x$r = filtered_x$r * n_pad
   #fitting
   n <- min(unlist(filtered_x$Variogram))
@@ -116,7 +116,7 @@ process_gene <- function(gene_name,sum_by_cut,n_pad,save_plot,Output_path) {
     Prop <- coef(best_model)[3] / (coef(best_model)[2] + coef(best_model)[3])
     Model <- 'Finetuned exponential'
     R2 <- 1 - (sum((filtered_x$Variogram - predict(best_model))^2) / sum((filtered_x$Variogram - mean(filtered_x$Variogram, na.rm = TRUE))^2))
-   } 
+  } 
   if (save_plot == TRUE){
     output_dir <- paste0(Output_path, "Variogram_plots/")
     if (!dir.exists(output_dir)) {
@@ -130,4 +130,3 @@ process_gene <- function(gene_name,sum_by_cut,n_pad,save_plot,Output_path) {
               Total_variance = Total_variance, R2 = R2,
               Prop = Prop, AIC = AIC, Model = Model, Vario_values = c(filtered_x$Variogram)))
 }
-

@@ -58,8 +58,7 @@ Compute_variogram = function(Expression_file,Meta_data,automatic_pad=TRUE,n_pad=
   colnames(sum_by_cut) <- gsub("/", "-", colnames(sum_by_cut))
 
   gene_names <- colnames(sum_by_cut[,-c(1,2,3,4)])
-  }
-  else {
+  } else {
     Expression_tibble <- summary(Expression_file) %>%
       as_tibble(.name_repair = "minimal")
     
@@ -89,7 +88,6 @@ Compute_variogram = function(Expression_file,Meta_data,automatic_pad=TRUE,n_pad=
       pivot_wider(names_from = gene, values_from = expression, values_fill = 0)
     colnames(sum_by_cut) <- gsub("/", "-", colnames(sum_by_cut))
     gene_names <- colnames(sum_by_cut[,-c(1,2)])
-    
   }
   gc()
   ptime <- system.time({
