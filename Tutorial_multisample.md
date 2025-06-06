@@ -134,9 +134,12 @@ Log2FC_table = Clustering_output$Log2FC_table
 Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue,name_object = 'Clustering')
 ```
 <img src= 'Example_data/KNN_heatmap_multisample.png' width="500" height="500">
+
 ```R
+
 Save_tissue_visualization(Meta_data,object = Clustering,Output_path,Method,Tissue,name_object = 'Clustering',scaling_factor=1.5)
 ```
+
 <img src= 'Example_data/KNN_atlas_multisample.png' width="500" height="500">
 
 
