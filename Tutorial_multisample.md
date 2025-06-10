@@ -65,7 +65,7 @@ Zero_genes = Zero_score_computation$Selected_genes
 
 ### Spatially variable genes
 This step is performed on each sample separately.
-To compute the Geary's C score and variograms for each sample, versions of functions *Geary_C_score* and *Compute_variogram* are implemented.
+To compute the Geary's C score and variograms for each sample, versions of functions *Geary_C_score* and *Compute_variogram* for multiple samples are implemented.
 
 #### Geary's C
 ```R
