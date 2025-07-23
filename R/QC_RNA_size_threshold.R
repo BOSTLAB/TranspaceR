@@ -30,7 +30,7 @@ QC_RNA_size_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_
   pdf(paste0(Output_path,Method,"_",Tissue,"_2D.pdf"),width = 7,height = 7,useDingbats = FALSE)
   p <- ggplot(data = Lib_df, aes(x = radius, y = Lib_size)) +
     geom_bin2d(bins = 150) +
-    scale_y_continuous(trans = "log",breaks=seq(0,max(Lib_size),round(max(Lib_size, na.rm = TRUE)/10,-2)+50)) + 
+    scale_y_continuous(trans = "log",breaks=seq(0,max(Lib_size, na.rm = TRUE),round(max(Lib_size, na.rm = TRUE)/10,-2)+50)) + 
     scale_fill_continuous(type = "viridis") +
     theme_bw()+
     xlab("Cell radius (um)") +
