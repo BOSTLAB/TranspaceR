@@ -23,7 +23,7 @@ Compute_variogram_multiple = function(Expression_file,Meta_data,automatic_pad=TR
     Meta_data_subset = fractions$Meta_data_files[[sample]]
     print(sample)
     Variogram_computation = Compute_variogram(Expression_file_subset,Meta_data_subset,
-                            automatic_pad=FALSE,n_pad=100,save_plot=TRUE,ncores=5,paste0(Output_path,sample,'_'))
+                          automatic_pad=automatic_pad,n_pad=n_pad,save_plot=save_plot,ncores=ncores,paste0(Output_path,sample,'_'))
     Variogram_list[[sample]] = Variogram_computation$Selected_genes
   }
   
