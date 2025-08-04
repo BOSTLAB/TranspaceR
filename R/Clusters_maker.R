@@ -15,11 +15,11 @@
 #' @importFrom irlba irlba 
 #' 
 
-Clusters_maker = function(Expression_file, Shared_genes, K = 30, metric_used = "L2", nThreads = 12, resolution = 1) {
+Clusters_maker = function(Expression_file, Shared_genes, K = 30, metric_used = "L2", nThreads = 12, resolution = 1, nv = 50) {
   if (is.data.frame(Expression_file)){
     Data_correction = Expression_file[, Shared_genes]
     Data_correction = as.data.frame(Data_correction)
-    PCA_data = irlba(as.matrix(Data_correction), nv = 50, verbose = TRUE)
+    PCA_data = irlba(as.matrix(Data_correction), nv = nv, verbose = TRUE)
     Clustering = Cell_clustering_function(PCA_data$u, K, metric_used, nThreads, resolution)
     Mean_expression = aggregate(Data_correction, by = list(Clustering), FUN = mean)
     rownames(Mean_expression) = Mean_expression$Group.1
@@ -27,7 +27,7 @@ Clusters_maker = function(Expression_file, Shared_genes, K = 30, metric_used = "
     genes = rownames(Mean_expression)
   } else {
     Data_correction = Expression_file[, Shared_genes]
-    PCA_data = irlba(as.matrix(Data_correction), nv = 50, verbose = TRUE)
+    PCA_data = irlba(as.matrix(Data_correction), nv = nv, verbose = TRUE)
     Clustering = Cell_clustering_function(PCA_data$u, K, metric_used, nThreads, resolution)
     Mean_expression = aggregate_sparse(Data_correction,Clustering)
     genes = rownames(Mean_expression)
