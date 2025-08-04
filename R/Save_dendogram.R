@@ -43,10 +43,8 @@ Save_dendogram = function (Clustering,Mean_expression,Annotation_cells_renamed,O
     scale_x_discrete(labels = filtered_table$Annotation_cells_renamed) +
     theme_classic()+
     theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-  plot(hc)
-  p <- recordPlot()
+  p <- ggplotify::as.grob(function() plot(hc))
   grid.arrange(p, m, ncol=1, heights=c(0.3, 0.5))
   dev.off()
   return(invisible())
 }
-
