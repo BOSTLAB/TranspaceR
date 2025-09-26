@@ -53,7 +53,7 @@ Geary_C_score <- function(Expression_file, Meta_data, Output_path, Method, Tissu
     b_2 <- kurtosis(Expression_file[, i])
     Var_random <- ((N - 1) * S_1 * (N^2 - 3 * N + 3 - (N - 1) * b_2) -
                      0.25 * (N - 1) * S_2 * (N^2 + 3 * N - 6 - (N^2 - N + 2) * b_2) +
-                     S_0^2 * (N^2 - 3 - (N - 1)^2 * b_2)) / (N * (N - 2)^2 * S_0^2)
+                     S_0^2 * (N^2 - 3 - (N - 1)^2 * b_2)) / (N * (N - 2)* (N-3) * S_0^2)
     
     p_value <- pnorm(gearys_C, mean = 1, sd = sqrt(Var_random), lower.tail = TRUE)
     
