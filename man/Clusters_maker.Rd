@@ -10,7 +10,8 @@ Clusters_maker(
   K = 30,
   metric_used = "L2",
   nThreads = 12,
-  resolution = 1
+  resolution = 1,
+  nv = 50
 )
 }
 \arguments{
