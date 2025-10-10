@@ -16,6 +16,7 @@
 #'      - Selected_genes: A character vector of gene names that show a significant excess variance ratio based on the specified thresholds.
 #'      - Excess_variance_ratio: A numeric vector of excess variance ratios for each gene in the expression dataset.
 #' @import Matrix
+#' @import scUtils
 #' @import doParallel
 #' @import foreach
 #' @export
@@ -28,7 +29,7 @@ Excess_variance_ratio_NB = function(Expression_file,Output_path,Method,Tissue,P_
   }
   else {
     Mean_expression = Matrix::colMeans(Expression_file)
-    Var_gene = colvars_sparse(Expression_file)
+    Var_gene = colvars_spm(Expression_file)
   }
   Mean_expression_2 = Mean_expression^2
   m_null= lm((Var_gene) ~ 0 + offset(Mean_expression)+ Mean_expression_2)
