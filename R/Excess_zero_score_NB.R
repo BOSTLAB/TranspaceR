@@ -21,14 +21,14 @@
 #' 
 Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P_value_threshold = 0.01, Delta_threshold = 0.01) {
   
-  Total_gene_expression = colSums(Expression_file)
+   Total_gene_expression = colSums(Expression_file)
   Proportion_zero = colSums(Expression_file==0)/nrow(Expression_file)
-  Mean_expression = colMeans(Expression_file)
-  Mean_expression[is.na(Mean_expression)]
   if (is.data.frame(Expression_file)) {
+    Mean_expression = colMeans(Expression_file)
     Var_expression = apply(Expression_file,MARGIN = 2,FUN = var)
   }
   else {
+    Mean_expression = Matrix::colMeans(Expression_file)
     Var_expression = colVars_spm(Expression_file)
   }
   #Basic model using a NB distribution as background hypothesis (with a constant theta/over-dispersion parameter)
