@@ -41,5 +41,6 @@ Imports:
     RCDT,
     tidyverse,
     e1071,
-    ggplotify
+    ggplotify,
+    scUtils
 
