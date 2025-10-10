@@ -21,7 +21,7 @@
 #' 
 Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P_value_threshold = 0.01, Delta_threshold = 0.01) {
   
-   Total_gene_expression = colSums(Expression_file)
+  Total_gene_expression = colSums(Expression_file)
   Proportion_zero = colSums(Expression_file==0)/nrow(Expression_file)
   if (is.data.frame(Expression_file)) {
     Mean_expression = colMeans(Expression_file)
