@@ -16,6 +16,7 @@
 #'    - Selected_genes: A data frame of genes that show a significant excess of zeros based on the specified thresholds.
 #'    - Excess_zero_score: A numeric vector of excess zero scores for each gene in the expression dataset.
 #' @import Matrix
+#' @importFrom scUtils colVars_spm
 #' @export
 #' 
 Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P_value_threshold = 0.01, Delta_threshold = 0.01) {
