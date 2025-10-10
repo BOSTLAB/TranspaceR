@@ -24,7 +24,12 @@ Excess_zero_score_NB <- function(Expression_file, Output_path, Method, Tissue, P
   Proportion_zero = colSums(Expression_file==0)/nrow(Expression_file)
   Mean_expression = colMeans(Expression_file)
   Mean_expression[is.na(Mean_expression)]
-  Var_expression = apply(Expression_file,FUN = var,MARGIN = 2)
+  if (is.data.frame(Expression_file)) {
+    Var_expression = apply(Expression_file,MARGIN = 2,FUN = var)
+  }
+  else {
+    Var_expression = colVars_spm(Expression_file)
+  }
   #Basic model using a NB distribution as background hypothesis (with a constant theta/over-dispersion parameter)
   #The probability of observing a zero is (theta/(mu+theta))^theta, for simpler fitting : log transform
   
