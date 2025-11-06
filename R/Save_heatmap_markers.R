@@ -16,7 +16,7 @@
 #' @import dplyr
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
-Save_heatmap_markers = function(Expression_file, object = Clustering, Output_path,Method,Tissue,name_object = 'Clustering') {
+Save_heatmap_markers = function(Expression_file, object = Clustering, Output_path,Method,Tissue,name_object = 'Clustering',n_top_genes = 5) {
   if (is.data.frame(Expression_file)) {
   mean_expression = aggregate(Expression_file, FUN = mean, by = list(object))
   rownames(mean_expression) <- mean_expression[[1]]
@@ -37,7 +37,7 @@ Save_heatmap_markers = function(Expression_file, object = Clustering, Output_pat
   result$Gene = rep(colnames(Log2FC), each = nrow(Log2FC))
   result <- result %>%
     group_by(Cluster) %>%
-    top_n(5, LogFC) %>%
+    top_n(n_top_genes, LogFC) %>%
     ungroup()
   result_wide = data.frame(matrix(ncol = length(unique(result$Gene))+1, nrow = length(unique(result$Cluster))))
   colnames(result_wide) = c('Cluster',unique(result$Gene))
