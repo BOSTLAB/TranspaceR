@@ -15,8 +15,8 @@
 QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path) {
   
   radius_squared = Meta_data$radius^2
-  Gene_size = colSums(Expression_file)
-  Lib_size = rowSums(Expression_file)
+  Gene_size = Matrix::colSums(Expression_file)
+  Lib_size = Matrix::rowSums(Expression_file)
   Neg_prob = (which(grepl(names(Gene_size),pattern = "Neg"))) #find positions of the negative probes 
   False_prob = (which(grepl(names(Gene_size),pattern = "False")))
   Blank = (which(grepl(names(Gene_size),pattern = "Blank")))
