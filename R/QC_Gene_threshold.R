@@ -12,7 +12,7 @@
 #' @importFrom Matrix colSums, rowSums
 #' @export
 
-QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path) {
+QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path,threshold = 100,automatic_threshold = FALSE) {
   
   radius_squared = Meta_data$radius^2
   Gene_size = colSums(Expression_file)
