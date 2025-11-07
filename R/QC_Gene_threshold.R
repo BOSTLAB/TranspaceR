@@ -12,7 +12,7 @@
 #' @importFrom Matrix colSums, rowSums
 #' @export
 
-QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path,threshold = 100,automatic_threshold = FALSE) {
+QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path) {
   
   radius_squared = Meta_data$radius^2
   Gene_size = colSums(Expression_file)
@@ -25,10 +25,7 @@ QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path
   Neg_prob_count = Neg_prob_count[is.finite(Neg_prob_count)]
   x = log10(Gene_size)
   x = x[is.finite(x)]
-  threshold = threshold
-  if (automatic_threshold) {
-    threshold = Otsu_thresholding(x)
-  }
+  threshold = Otsu_thresholding(x)
   neg_probes_before_threshold <- sum(Neg_prob_count < threshold)
   total_neg_probes <- length(Neg_prob_count)
   score_separability = neg_probes_before_threshold/total_neg_probes
