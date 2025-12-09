@@ -7,10 +7,12 @@
 Save_heatmap_markers(
   Expression_file,
   object = Clustering,
+  Data_correction,
   Output_path,
   Method,
   Tissue,
-  name_object = "Clustering"
+  name_object = "Clustering",
+  n_top_genes = 5
 )
 }
 \arguments{
@@ -18,6 +20,8 @@ Save_heatmap_markers(
 
 \item{object}{A clustering object that defines the clusters for the samples. This is typically a vector 
 or factor indicating the cluster assignment for each sample.}
+
+\item{Data_correction}{The Expression file reduced to the selected variable genes}
 
 \item{Output_path}{A character string specifying the directory where the output PDF file will be saved.}
 

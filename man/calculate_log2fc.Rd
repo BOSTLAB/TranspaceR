@@ -4,9 +4,11 @@
 \alias{calculate_log2fc}
 \title{Calculate log2 fold change for a given gene across clusters.}
 \usage{
-calculate_log2fc(gene, Clustering)
+calculate_log2fc(Expression_file, gene, Clustering)
 }
 \arguments{
+\item{Expression_file}{Gene x cell count matrix}
+
 \item{gene}{A string representing the gene of interest.}
 
 \item{Clustering}{A vector indicating the cluster membership of each sample.}

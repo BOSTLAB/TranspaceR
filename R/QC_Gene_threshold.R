@@ -9,7 +9,8 @@
 #' @param Tissue A character string indicating the type of tissue being analyzed.
 #' @param Output_path A character string specifying the directory where the output PDF will be saved.
 #' @return A list containing the Otsu threshold and the separability score.
-#' @importFrom Matrix colSums, rowSums
+#' @importFrom Matrix colSums
+#' @importFrom Matrix rowSums
 #' @export
 
 QC_Gene_threshold = function(Expression_file,Meta_data,Method,Tissue,Output_path) {
