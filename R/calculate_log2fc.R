@@ -1,11 +1,11 @@
 #' Calculate log2 fold change for a given gene across clusters.
-#'
+#' @param Expression_file Gene x cell count matrix
 #' @param gene A string representing the gene of interest.
 #' @param Clustering A vector indicating the cluster membership of each sample.
 #' @return A named vector of log2 fold changes for the specified gene.
 #' @export
 #' 
-calculate_log2fc <- function(gene,Clustering) {
+calculate_log2fc <- function(Expression_file,gene,Clustering) {
   x = Expression_file[, gene]
   mean_expression = aggregate(x, FUN = mean, by = list(Clustering))$x
   Proportion_cluster = table(Clustering) / length(Clustering)
