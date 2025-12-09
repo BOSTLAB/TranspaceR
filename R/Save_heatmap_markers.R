@@ -5,6 +5,7 @@
 #' for each cluster. The resulting heatmap is saved as a PDF file.
 #'
 #' @param Expression_file A data frame or a sparse matrix containing gene expression data with genes as columns and cells as rows.
+#' @param Data_correction The Expression file reduced to the selected variable genes 
 #' @param object A clustering object that defines the clusters for the samples. This is typically a vector 
 #' or factor indicating the cluster assignment for each sample.
 #' @param Output_path A character string specifying the directory where the output PDF file will be saved.
@@ -16,7 +17,7 @@
 #' @import dplyr
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyr pivot_wider
-Save_heatmap_markers = function(Expression_file, object = Clustering, Output_path,Method,Tissue,name_object = 'Clustering',n_top_genes = 5) {
+Save_heatmap_markers = function(Expression_file, object = Clustering,Data_correction, Output_path,Method,Tissue,name_object = 'Clustering',n_top_genes = 5) {
   if (is.data.frame(Expression_file)) {
   mean_expression = aggregate(Expression_file, FUN = mean, by = list(object))
   rownames(mean_expression) <- mean_expression[[1]]
