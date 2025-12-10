@@ -29,7 +29,7 @@ Save_heatmap_markers = function(Expression_file, object = Clustering,Data_correc
     genes = rownames(mean_expression)
     mean_expression = t(mean_expression)
   }
-  Log2FC_list = sapply(genes, function(gene) calculate_log2fc(gene, object), simplify = FALSE)
+  Log2FC_list = sapply(genes, function(gene) calculate_log2fc(Expression_file, gene, object), simplify = FALSE)
   Log2FC = as.data.frame(Log2FC_list)
   result = data.frame(matrix(ncol = 3, nrow = ncol(Log2FC)*nrow(Log2FC)))
   colnames(result) = c('Cluster','Gene','LogFC')
