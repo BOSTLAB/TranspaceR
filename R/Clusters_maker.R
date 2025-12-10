@@ -33,7 +33,7 @@ Clusters_maker = function(Expression_file, Shared_genes, K = 30, metric_used = "
     genes = rownames(Mean_expression)
     Mean_expression = t(Mean_expression[,-1])
   }
-  Log2FC_list = sapply(genes, function(gene) calculate_log2fc(gene, Clustering), simplify = FALSE)
+  Log2FC_list = sapply(genes, function(gene) calculate_log2fc(Expression_file, gene, Clustering), simplify = FALSE)
   Log2FC = as.data.frame(Log2FC_list)
   result <- Log2FC %>%
     rownames_to_column(var = "Cluster") %>%
