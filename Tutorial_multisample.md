@@ -130,7 +130,8 @@ Data_correction = Clustering_output$Data_correction
 Log2FC_table = Clustering_output$Log2FC_table
 ```
 ```R
-Save_heatmap_markers(Expression_file, object = Clustering,Output_path,Method,Tissue,name_object = 'Clustering')
+Save_heatmap_markers(Expression_file, object = Clustering,Data_correction, Output_path,Method,Tissue,name_object = 'Clustering',n_top_genes = 5)
+
 ```
 <img src= 'Example_data/KNN_heatmap_multisample.png' width="500" height="500">
 
@@ -143,4 +144,5 @@ Save_tissue_visualization(Meta_data,object = Clustering,Output_path,Method,Tissu
 
 
 #### For more steps refer to the one sample tutorial [here](Tutorial_TranspaceR).
+
 
