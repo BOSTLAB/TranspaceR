@@ -128,7 +128,7 @@ Log2FC_table = Clustering_output$Log2FC_table
 ```
 The ouptuts of the function Clusters_maker() include the list of cluster affiliation, the PCA results, the log2FC table and the mean expression of genes within each cluster file.
 ```R
-Save_heatmap_markersSave_heatmap_markers(Expression_file, object = Clustering,Data_correction, Output_path,Method,Tissue,name_object = 'Clustering',n_top_genes = 5)
+Save_heatmap_markers(Expression_file, object = Clustering,Data_correction, Output_path,Method,Tissue,name_object = 'Clustering',n_top_genes = 5)
 
 ```
 ```R
