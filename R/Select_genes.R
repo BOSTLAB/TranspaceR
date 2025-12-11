@@ -10,7 +10,7 @@
 #' @importFrom UpSetR upset 
 #' @export
 
-Select_genes = function (Selected_objects =list(Variance_genes,Zero_genes),Selected_names = c('Variance_genes','Zero_genes')) {
+Select_genes = function (Selected_objects =list(Variance_genes,Zero_genes,Geary_genes),Selected_names = c('Variance_genes','Zero_genes','Geary_genes')) {
   Shared_genes = unique(unlist(Selected_objects))
   #Upset plot
   score_df = as.data.frame(Shared_genes)
