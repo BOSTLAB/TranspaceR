@@ -1,5 +1,5 @@
  ## Overview
-This document presents the steps to analyze a subset (portion located between 2000 and 4000 on both axis) of the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard)  from 10XGenomics using the TranSpaceR pipeline. The subset can be found in the here : [Expression_file](Example_data/Expression_file_example.csv.gz) and [Metadata](Example_data/Meta_data_example.csv).
+This document presents the steps to analyze a subset (portion located between 2000 and 4000 on both axis) of the dataset [`Xenium Human Lymph node`](https://www.10xgenomics.com/datasets/human-lymph-node-preview-data-xenium-human-multi-tissue-and-cancer-panel-1-standard)  from 10XGenomics using the TranspaceR pipeline. The subset can be found here : [Expression_file](Example_data/Expression_file_example.csv.gz) and [Metadata](Example_data/Meta_data_example.csv).
 The analysis includes data curation, variable genes selection, clustering and visualization of results. 
 ## Directory Structure
 ```
